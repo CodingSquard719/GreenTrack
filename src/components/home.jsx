@@ -14,7 +14,8 @@ import {
   Wind,
   Droplets,
   AlertTriangle,
-  ChevronDown
+  ChevronDown,
+  Recycle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -63,6 +64,10 @@ const Dashboard = () => {
 
   const handleCarbonTrackClick = () => {
     navigate('/carbon');
+  };
+
+  const handleWasteClick = () => {
+    navigate('/waste');
   };
 
   return (
@@ -285,6 +290,19 @@ const Dashboard = () => {
                 <div>
                   <h3 className="font-semibold text-gray-900">Carbon Tracker</h3>
                   <p className="text-sm text-gray-500">Monitor your carbon footprint</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Waste Management Button */}
+          <div onClick={handleWasteClick} className="cursor-pointer mt-4">
+            <div className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all">
+              <div className="flex items-center space-x-4">
+                <Recycle className="h-6 w-6 text-green-600" />
+                <div>
+                  <h3 className="font-semibold text-gray-900">Waste Management</h3>
+                  <p className="text-sm text-gray-500">Track and manage your waste</p>
                 </div>
               </div>
             </div>
