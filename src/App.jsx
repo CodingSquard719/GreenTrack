@@ -7,6 +7,7 @@ import WasteManagementDashboard from "./components/waste"
 import EnvironmentalMonitoring from "./components/monitoring"
 import GreenChallengesPage from "./components/challenges"
 import CommunityEventsPage from "./components/community" 
+import ProfilePage from "./components/profile";
 import { Toaster } from "./components/ui/toaster"
 import './App.css'
 
@@ -22,7 +23,8 @@ function App() {
             <Route path="/waste" element={<WasteManagementDashboard />} />
             <Route path="/monitoring" element={<EnvironmentalMonitoring />} />
             <Route path="/challenges" element={<GreenChallengesPage />} />
-            <Route path="/community" element={<CommunityEventsPage />} /> {/* Add this route */}
+            <Route path="/community" element={<CommunityEventsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

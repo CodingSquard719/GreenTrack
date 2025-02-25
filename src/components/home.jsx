@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import "../App.css";
-import { 
-  BarChart, 
-  LeafyGreen, 
-  Trash2, 
-  Radio, 
-  Trophy, 
+import {
+  BarChart,
+  LeafyGreen,
+  Trash2,
+  Radio,
+  Trophy,
   Users,
   Menu,
   X,
@@ -16,7 +16,8 @@ import {
   AlertTriangle,
   ChevronDown,
   Recycle,
-  Activity
+  Activity,
+  UserCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,7 +32,8 @@ const Dashboard = () => {
     { title: 'Waste Management', icon: Trash2, route: '/waste' },
     { title: 'Monitoring', icon: Radio, route: '/monitoring' },
     { title: 'Challenges', icon: Trophy, route: '/challenges' },
-    { title: 'Community', icon: Users, route: '/community' }
+    { title: 'Community', icon: Users, route: '/community' },
+    { title: 'Profile', icon: UserCircle, route: '/profile' }
   ];
 
   const weatherData = {
@@ -68,6 +70,68 @@ const Dashboard = () => {
     navigate(path);
   };
 
+  const ProfileModal = () => (
+    <div className="fixed inset-0 bg-white z-50">
+      <div className="p-4">
+        <button
+          onClick={() => setIsProfileModalOpen(false)}
+          className="flex items-center text-gray-600 hover:text-gray-900 mb-6"
+        >
+          <X className="h-6 w-6 mr-2" />
+          Close
+        </button>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-block p-2 rounded-full bg-teal-50 mb-4">
+              <UserCircle className="h-24 w-24 text-teal-600" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900">John Doe</h1>
+            <p className="text-gray-500">Level 4 Eco Warrior</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">Profile Stats</h2>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Carbon Saved</span>
+                  <span className="font-semibold">245 kg CO₂</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Challenges Completed</span>
+                  <span className="font-semibold">12</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Green Points</span>
+                  <span className="font-semibold">1,234</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">Account Settings</h2>
+              <div className="space-y-4">
+                <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-50">
+                  Edit Profile
+                </button>
+                <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-50">
+                  Notifications
+                </button>
+                <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-50">
+                  Privacy Settings
+                </button>
+                <button className="w-full text-left px-4 py-2 rounded hover:bg-gray-50 text-red-600">
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex h-screen bg-slate-50">
       {/* Sidebar */}
@@ -89,7 +153,12 @@ const Dashboard = () => {
             <a
               key={index}
               href={item.route}
-              className="flex items-center px-4 py-3 text-gray-100 hover:bg-teal-500 transition-colors relative group"
+              className="flex items-center px-4 py-3 text-gray-100 hover:bg-teal-500 transition-colors relative group no-outline"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(item.route);
+              }}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <item.icon className="h-5 w-5" />
               <span className={`ml-4 ${!isSidebarOpen ? 'hidden' : ''}`}>{item.title}</span>
@@ -101,6 +170,19 @@ const Dashboard = () => {
             </a>
           ))}
         </nav>
+
+        {/* Add Profile Section at bottom of sidebar */}
+        <div className="absolute bottom-0 w-full p-4">
+          <div 
+            className="flex items-center px-4 py-2 cursor-pointer hover:bg-teal-500 rounded-lg transition-colors"
+            onClick={() => navigate('/profile')}
+          >
+            <UserCircle className="h-6 w-6 text-white" />
+            {isSidebarOpen && (
+              <span className="ml-2 text-white font-medium">John Doe</span>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Main Content */}
@@ -109,45 +191,41 @@ const Dashboard = () => {
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
             <div className="flex gap-2">
-              <button 
+              <button
                 onClick={() => setSelectedMetric('daily')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  selectedMetric === 'daily' 
-                    ? 'bg-teal-600 text-white' 
+                className={`px-4 py-2 rounded-lg transition-colors ${selectedMetric === 'daily'
+                    ? 'bg-teal-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 Daily
               </button>
-              <button 
+              <button
                 onClick={() => setSelectedMetric('weekly')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  selectedMetric === 'weekly' 
-                    ? 'bg-teal-600 text-white' 
+                className={`px-4 py-2 rounded-lg transition-colors ${selectedMetric === 'weekly'
+                    ? 'bg-teal-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 Weekly
               </button>
-              <button 
+              <button
                 onClick={() => setSelectedMetric('monthly')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  selectedMetric === 'monthly' 
-                    ? 'bg-teal-600 text-white' 
+                className={`px-4 py-2 rounded-lg transition-colors ${selectedMetric === 'monthly'
+                    ? 'bg-teal-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 Monthly
               </button>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Carbon Score Card */}
-            <div 
-              className={`bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer ${
-                expandedCard === 'carbon' ? 'lg:col-span-2 lg:row-span-2' : ''
-              }`}
+            <div
+              className={`bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer ${expandedCard === 'carbon' ? 'lg:col-span-2 lg:row-span-2' : ''
+                }`}
               onClick={() => toggleCardExpansion('carbon')}
             >
               <div className="flex justify-between items-center mb-4">
@@ -156,7 +234,7 @@ const Dashboard = () => {
               </div>
               <div className="text-3xl font-bold text-teal-600">245 kg</div>
               <p className="text-gray-500 mt-2">CO₂ this month</p>
-              
+
               {expandedCard === 'carbon' && (
                 <div className="mt-4 space-y-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
@@ -202,10 +280,9 @@ const Dashboard = () => {
             </div>
 
             {/* Air Quality Card */}
-            <div 
-              className={`bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer ${
-                expandedCard === 'air' ? 'lg:col-span-2 lg:row-span-2' : ''
-              }`}
+            <div
+              className={`bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer ${expandedCard === 'air' ? 'lg:col-span-2 lg:row-span-2' : ''
+                }`}
               onClick={() => toggleCardExpansion('air')}
             >
               <div className="flex justify-between items-center mb-4">
@@ -218,7 +295,7 @@ const Dashboard = () => {
                   {airQualityData.status}
                 </span>
               </div>
-              
+
               {expandedCard === 'air' && (
                 <div className="mt-4 space-y-4">
                   <div className="grid grid-cols-2 gap-4">
@@ -226,9 +303,8 @@ const Dashboard = () => {
                       <div key={key} className="bg-gray-50 p-3 rounded-lg">
                         <div className="text-sm text-gray-500 uppercase">{key}</div>
                         <div className="text-lg font-semibold">{data.value}</div>
-                        <div className={`text-sm ${
-                          data.status === 'Good' ? 'text-green-600' : 'text-yellow-600'
-                        }`}>
+                        <div className={`text-sm ${data.status === 'Good' ? 'text-green-600' : 'text-yellow-600'
+                          }`}>
                           {data.status}
                         </div>
                       </div>
@@ -281,7 +357,7 @@ const Dashboard = () => {
           </div>
 
           {/* Carbon Track Button */}
-          <button 
+          <button
             onClick={(e) => handleNavigation('/carbon', e)}
             className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
           >
@@ -295,7 +371,7 @@ const Dashboard = () => {
           </button>
 
           {/* Waste Management Button */}
-          <button 
+          <button
             onClick={(e) => handleNavigation('/waste', e)}
             className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
           >
@@ -309,7 +385,7 @@ const Dashboard = () => {
           </button>
 
           {/* Environmental Monitoring Button */}
-          <button 
+          <button
             onClick={(e) => handleNavigation('/monitoring', e)}
             className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
           >
@@ -323,7 +399,7 @@ const Dashboard = () => {
           </button>
 
           {/* Challenges Button */}
-          <div 
+          <div
             onClick={() => navigate('/challenges')}
             className="cursor-pointer p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
           >
@@ -337,7 +413,7 @@ const Dashboard = () => {
           </div>
 
           {/* Community Button */}
-          <div 
+          <div
             onClick={() => navigate('/community')}
             className="cursor-pointer p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
           >
@@ -379,4 +455,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard;
