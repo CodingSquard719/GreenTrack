@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Leaf, Recycle, Globe, Award, Battery, Car, Users } from 'lucide-react';
 import "../App.css";
+
 const LandingPage = () => {
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/dashboard');  // Updated to match the new route
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
             {/* Hero Section */}
@@ -13,7 +21,10 @@ const LandingPage = () => {
                     <p className="text-xl text-green-700 mb-8 max-w-2xl mx-auto">
                         Join the movement towards a sustainable future with AI-powered environmental monitoring and tracking
                     </p>
-                    <button className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition-colors flex items-center mx-auto gap-2 mb-16">
+                    <button 
+                        onClick={handleGetStarted}
+                        className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition-colors flex items-center mx-auto gap-2 mb-16"
+                    >
                         Get Started <ArrowRight className="w-5 h-5" />
                     </button>
 
