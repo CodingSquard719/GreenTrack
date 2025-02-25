@@ -336,6 +336,20 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {/* Community Button */}
+          <div 
+            onClick={() => navigate('/community')}
+            className="cursor-pointer p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
+          >
+            <div className="flex items-center space-x-4">
+              <Users className="h-6 w-6 text-indigo-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Community</h3>
+                <p className="text-sm text-gray-500">Join eco-friendly groups and events</p>
+              </div>
+            </div>
+          </div>
+
           {/* Recent Activity Section */}
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Recent Activity</h2>

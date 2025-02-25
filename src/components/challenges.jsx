@@ -146,6 +146,17 @@ const GreenChallengesPage = () => {
                     </span>
                     <span>{challenge.daysLeft} days left</span>
                   </div>
+                  {/* Add Join Challenge Button */}
+                  <button 
+                    className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center"
+                    onClick={() => {
+                      // Add your join logic here
+                      alert(`Joined ${challenge.title} challenge!`);
+                    }}
+                  >
+                    <Leaf className="w-4 h-4 mr-2" />
+                    Join Challenge
+                  </button>
                 </div>
               </CardContent>
             </Card>
