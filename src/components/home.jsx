@@ -322,6 +322,20 @@ const Dashboard = () => {
             </div>
           </button>
 
+          {/* Challenges Button */}
+          <div 
+            onClick={() => navigate('/challenges')}
+            className="cursor-pointer p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
+          >
+            <div className="flex items-center space-x-4">
+              <Trophy className="h-6 w-6 text-yellow-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Green Challenges</h3>
+                <p className="text-sm text-gray-500">Complete eco-friendly tasks and earn rewards</p>
+              </div>
+            </div>
+          </div>
+
           {/* Recent Activity Section */}
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Recent Activity</h2>
