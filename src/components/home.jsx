@@ -15,7 +15,8 @@ import {
   Droplets,
   AlertTriangle,
   ChevronDown,
-  Recycle
+  Recycle,
+  Activity
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,12 +63,9 @@ const Dashboard = () => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
   };
 
-  const handleCarbonTrackClick = () => {
-    navigate('/carbon');
-  };
-
-  const handleWasteClick = () => {
-    navigate('/waste');
+  const handleNavigation = (path, e) => {
+    e.preventDefault();
+    navigate(path);
   };
 
   return (
@@ -283,30 +281,46 @@ const Dashboard = () => {
           </div>
 
           {/* Carbon Track Button */}
-          <div onClick={handleCarbonTrackClick} className="cursor-pointer">
-            <div className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all">
-              <div className="flex items-center space-x-4">
-                <LeafyGreen className="h-6 w-6 text-green-600" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Carbon Tracker</h3>
-                  <p className="text-sm text-gray-500">Monitor your carbon footprint</p>
-                </div>
+          <button 
+            onClick={(e) => handleNavigation('/carbon', e)}
+            className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
+          >
+            <div className="flex items-center space-x-4">
+              <LeafyGreen className="h-6 w-6 text-green-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Carbon Tracker</h3>
+                <p className="text-sm text-gray-500">Monitor your carbon footprint</p>
               </div>
             </div>
-          </div>
+          </button>
 
           {/* Waste Management Button */}
-          <div onClick={handleWasteClick} className="cursor-pointer mt-4">
-            <div className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all">
-              <div className="flex items-center space-x-4">
-                <Recycle className="h-6 w-6 text-green-600" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Waste Management</h3>
-                  <p className="text-sm text-gray-500">Track and manage your waste</p>
-                </div>
+          <button 
+            onClick={(e) => handleNavigation('/waste', e)}
+            className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
+          >
+            <div className="flex items-center space-x-4">
+              <Recycle className="h-6 w-6 text-green-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Waste Management</h3>
+                <p className="text-sm text-gray-500">Track and manage your waste</p>
               </div>
             </div>
-          </div>
+          </button>
+
+          {/* Environmental Monitoring Button */}
+          <button 
+            onClick={(e) => handleNavigation('/monitoring', e)}
+            className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-all mt-4"
+          >
+            <div className="flex items-center space-x-4">
+              <Activity className="h-6 w-6 text-blue-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Environmental Monitoring</h3>
+                <p className="text-sm text-gray-500">Track air quality and environmental metrics</p>
+              </div>
+            </div>
+          </button>
 
           {/* Recent Activity Section */}
           <div className="mt-8">
