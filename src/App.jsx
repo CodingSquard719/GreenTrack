@@ -10,21 +10,92 @@ import CommunityEventsPage from "./components/community"
 import ProfilePage from "./components/profile";
 import { Toaster } from "./components/ui/toaster"
 import './App.css'
+import LoginPage from "./page/login"
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Protected Route component
+  const ProtectedRoute = ({ children }) => {
+    if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+
   return (
     <>
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/carbon" element={<CarbonTracker />} />
-            <Route path="/waste" element={<WasteManagementDashboard />} />
-            <Route path="/monitoring" element={<EnvironmentalMonitoring />} />
-            <Route path="/challenges" element={<GreenChallengesPage />} />
-            <Route path="/community" element={<CommunityEventsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            {/* Public routes */}
+            <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
+
+            {/* Protected routes */}
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <LandingPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/carbon"
+              element={
+                <ProtectedRoute>
+                  <CarbonTracker />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/waste"
+              element={
+                <ProtectedRoute>
+                  <WasteManagementDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/monitoring"
+              element={
+                <ProtectedRoute>
+                  <EnvironmentalMonitoring />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/challenges"
+              element={
+                <ProtectedRoute>
+                  <GreenChallengesPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/community"
+              element={
+                <ProtectedRoute>
+                  <CommunityEventsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
