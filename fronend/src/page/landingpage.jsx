@@ -1,8 +1,7 @@
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Leaf, Recycle, Globe, Award, Battery, Car, Users } from 'lucide-react';
 import "../App.css";
-
 const LandingPage = () => {
     const navigate = useNavigate();
 
@@ -15,11 +14,12 @@ const LandingPage = () => {
             {/* Hero Section */}
             <div className="container mx-auto px-4 pt-20 pb-32">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold text-green-800 mb-6">
+                    <h1 className="text-6xl font-semibold text-green-800 mb-6">
                         Track Your Environmental Impact
                     </h1>
-                    <p className="text-xl text-green-700 mb-8 max-w-2xl mx-auto">
+                    <p className="text-2xl text-green-700 mb-8 max-w-2xl mx-auto">
                         Join the movement towards a sustainable future with AI-powered environmental monitoring and tracking
+                        <h1 className="font-semibold text-3xl">"Surrounded by green my soul feels green"</h1>
                     </p>
                     <button 
                         onClick={handleGetStarted}

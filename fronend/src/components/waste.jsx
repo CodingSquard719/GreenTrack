@@ -100,8 +100,15 @@ const WasteManagementDashboard = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <Card className="md:col-span-2">
               <CardContent className="p-4">
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  📍 Interactive Map Will Be Displayed Here
+                <div className="w-full h-64 bg-gray-200 rounded-lg">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    style={{ border: 0 }}
+                    src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Recycling+Centers`}
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </CardContent>
             </Card>
@@ -131,7 +138,7 @@ const WasteManagementDashboard = () => {
                   <h3 className="text-xl font-semibold mb-4">📅 Schedule a Pickup</h3>
                   <div className="space-y-4">
                     <div className="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                      Calendar Widget Will Be Displayed Here
+                      <img src="https://media.discordapp.net/attachments/1128761719611740236/1344853073834545303/Screenshot_2025-02-28_073229.png?ex=67c26b86&is=67c11a06&hm=2303cd9ef2acb8491e9555b76b9e0a6479cc4a5f1565d5f81b7921ae0fcc23d9&=&format=webp&quality=lossless&width=499&height=311" alt="" />
                     </div>
                     <button className="bg-green-500 text-white px-4 py-2 rounded-lg w-full">
                       Confirm Pickup

@@ -11,8 +11,8 @@ const GreenChallengesPage = () => {
   const challenges = [
     {
       id: 1,
-      title: "No Plastic Week",
-      description: "Avoid single-use plastics for 7 days",
+      title: "7-days Tree Planting Challenge",
+      description: "Plant different kinds of trees for 7-days",
       points: 500,
       participants: 1234,
       progress: 60,
@@ -31,8 +31,8 @@ const GreenChallengesPage = () => {
     },
     {
       id: 3,
-      title: "Zero Waste Day",
-      description: "Generate no waste for 24 hours",
+      title: "Electricity Consumption Reduction",
+      description: "Reduce your electricity consumption by 30%",
       points: 300,
       participants: 2541,
       progress: 80,

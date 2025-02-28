@@ -42,12 +42,12 @@ const ProfilePage = () => {
   };
 
   const userProfile = {
-    name: 'Alex Johnson',
+    name: 'Suman Pradhan',
     email: 'alex@example.com',
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
     joinDate: 'January 2024',
-    avatar: '/api/placeholder/120/120',
+    avatar: 'https://images-ext-1.discordapp.net/external/mF0LfE5Xd2ujPxZ1wpdSBruQ2M188-BN-C54LFqq-vI/https/i.pinimg.com/736x/97/ef/24/97ef241b207714a81b26d15d7371dd10.jpg?format=webp&width=528&height=586',
     ecoScore: 856,
     level: 'Eco Warrior',
     carbonSaved: '2.5 tons',

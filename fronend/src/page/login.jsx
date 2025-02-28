@@ -41,11 +41,10 @@ const GreenTrackLogin = ({ setIsAuthenticated }) => {
     return () => clearInterval(interval);
   }, []);
   
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Add shake effect if form is empty (demo purposes)
     if (!email || !password) {
       setFormShake(true);
       setTimeout(() => setFormShake(false), 500);
@@ -56,9 +55,8 @@ const GreenTrackLogin = ({ setIsAuthenticated }) => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      alert(isLoginView ? 'Login successful! Welcome to GreenTrack.' : 'Sign up successful! Welcome to GreenTrack.');
       setIsAuthenticated(true);
-      navigate('/'); // Redirect to landing page
+      navigate('/welcome'); // Navigate to landing page after login
     }, 2000);
   };
   
@@ -197,7 +195,7 @@ const GreenTrackLogin = ({ setIsAuthenticated }) => {
             </div>
           </div>
           
-          <form onSubmit={handleSubmit} className="fadeSlideIn" style={{ animationDelay: '0.9s' }}>
+          <form onSubmit={handleLogin} className="fadeSlideIn" style={{ animationDelay: '0.9s' }}>
             <div className="space-y-4">
               {!isLoginView && (
                 <div className="overflow-hidden" style={{ animationDelay: '0.3s' }}>

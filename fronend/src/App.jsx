@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import LandingPage from "./page/landingpage"
-import CarbonTracker from "./components/carbon"
-import Dashboard from "./components/home"
-import WasteManagementDashboard from "./components/waste"
-import EnvironmentalMonitoring from "./components/monitoring"
-import GreenChallengesPage from "./components/challenges"
-import CommunityEventsPage from "./components/community" 
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LandingPage from "./page/landingpage";
+import CarbonTracker from "./components/carbon";
+import Dashboard from "./components/home";
+import WasteManagementDashboard from "./components/waste";
+import EnvironmentalMonitoring from "./components/monitoring";
+import GreenChallengesPage from "./components/challenges";
+import CommunityEventsPage from "./components/community";
 import ProfilePage from "./components/profile";
-import { Toaster } from "./components/ui/toaster"
-import './App.css'
-import LoginPage from "./page/login"
+import MapComponent from "./components/GoogleMap";
+import { Toaster } from "./components/ui/toaster";
+import RegisterForm from './components/RegisterForm';
+import LoginPage from "./page/login";
+import EnvironmentalReportForm from './components/EnvironmentalReportForm';
+import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,6 +26,14 @@ function App() {
     return children;
   };
 
+  // Public Route component to redirect authenticated users
+  const PublicRoute = ({ children }) => {
+    if (isAuthenticated) {
+      return <Navigate to="/home" />;
+    }
+    return children;
+  };
+
   return (
     <>
       <Router>
@@ -30,16 +41,32 @@ function App() {
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
-
-            {/* Protected routes */}
+            <Route path="/register" element={<RegisterForm />} />
+            
+            {/* Landing page route */}
             <Route
-              path="/"
+              path="/welcome"
               element={
                 <ProtectedRoute>
                   <LandingPage />
                 </ProtectedRoute>
               }
             />
+
+            {/* Home/Dashboard route */}
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Redirect root to login */}
+            <Route path="/" element={<Navigate to="/login" />} />
+            
+            {/* Other protected routes */}
             <Route
               path="/dashboard"
               element={
@@ -48,6 +75,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            
             <Route
               path="/carbon"
               element={
@@ -56,6 +84,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/waste"
               element={
@@ -64,6 +93,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/monitoring"
               element={
@@ -72,6 +102,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/challenges"
               element={
@@ -80,6 +111,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/community"
               element={
@@ -88,6 +120,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/profile"
               element={
@@ -96,13 +129,33 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="*" element={<Navigate to="/" />} />
+
+            <Route
+              path="/map"
+              element={
+                <ProtectedRoute>
+                  <MapComponent />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/report"
+              element={
+                <ProtectedRoute>
+                  <EnvironmentalReportForm />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Redirect unmatched routes to login */}
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </div>
       </Router>
       <Toaster />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

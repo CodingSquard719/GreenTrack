@@ -22,7 +22,7 @@ const CarbonTracker = () => {
   const navigate = useNavigate(); // Add this line
 
   const [user, setUser] = useState({
-    name: 'John Doe',
+    name: 'Suman Pradhan',
     goal: 15, // Daily carbon goal in kg
     achievements: ['First Log', 'Week Streak']
   });
@@ -149,7 +149,7 @@ const CarbonTracker = () => {
       </h3>
       {Object.keys(activities[category]).map(subcat => (
         <div key={subcat} className="flex items-center gap-4">
-          <span className="w-24 text-sm text-gray-600">
+          <span className="w-30 text-sm text-yellow-800">
             {subcat.charAt(0).toUpperCase() + subcat.slice(1)}:
           </span>
           <input
@@ -304,14 +304,14 @@ const CarbonTracker = () => {
                 <div key={category}>
                   <h3 className="font-semibold flex items-center gap-2">
                     {category === 'travel' && <Car className="text-blue-500" />}
-                    {category === 'electricity' && <Lightbulb className="text-yellow-500" />}
+                    {category === 'electricity' && <Lightbulb className="text-green-500" />}
                     {category === 'food' && <Utensils className="text-red-500" />}
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </h3>
                   <ul className="mt-2 space-y-2">
                     {tips.map((tip, index) => (
                       <li key={index} className="text-gray-600 flex items-center gap-2">
-                        <span className={`w-2 h-2 bg-${category === 'travel' ? 'blue' : category === 'electricity' ? 'yellow' : 'red'}-500 rounded-full`}></span>
+                        <span className={`w-2 h-2 bg-${category === 'travel' ? 'blue' : category === 'electricity' ? 'green' : 'red'}-500 rounded-full`}></span>
                         {tip}
                       </li>
                     ))}

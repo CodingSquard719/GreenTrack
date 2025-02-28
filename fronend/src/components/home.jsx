@@ -33,6 +33,7 @@ const Dashboard = () => {
     { title: 'Monitoring', icon: Radio, route: '/monitoring' },
     { title: 'Challenges', icon: Trophy, route: '/challenges' },
     { title: 'Community', icon: Users, route: '/community' },
+    { title: 'Report', icon: AlertTriangle, route: '/report' },  // Add this line
     { title: 'Profile', icon: UserCircle, route: '/profile' }
   ];
 
@@ -86,7 +87,7 @@ const Dashboard = () => {
             <div className="inline-block p-2 rounded-full bg-teal-50 mb-4">
               <UserCircle className="h-24 w-24 text-teal-600" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">John Doe</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Suman Pradhan</h1>
             <p className="text-gray-500">Level 4 Eco Warrior</p>
           </div>
 
@@ -141,7 +142,7 @@ const Dashboard = () => {
             <div className="bg-white p-2 rounded-lg">
               <LeafyGreen className="h-8 w-8 text-teal-600" />
             </div>
-            <span className="ml-2 font-bold text-xl">EcoTrack</span>
+            <span className="ml-2 font-bold text-xl">GreenTrack</span>
           </div>
           <button onClick={toggleSidebar} className="p-2 hover:bg-teal-500 rounded-lg transition-colors">
             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
@@ -172,14 +173,14 @@ const Dashboard = () => {
         </nav>
 
         {/* Add Profile Section at bottom of sidebar */}
-        <div className="absolute bottom-0 w-full p-4">
+        <div className="absolute bottom-0 w-absolute p-4">
           <div 
             className="flex items-center px-4 py-2 cursor-pointer hover:bg-teal-500 rounded-lg transition-colors"
             onClick={() => navigate('/profile')}
           >
             <UserCircle className="h-6 w-6 text-white" />
             {isSidebarOpen && (
-              <span className="ml-2 text-white font-medium">John Doe</span>
+              <span className="ml-2 text-white font-medium">Suman Pradhan </span>
             )}
           </div>
         </div>
@@ -431,21 +432,45 @@ const Dashboard = () => {
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Recent Activity</h2>
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="divide-y divide-gray-200">
-                {[1, 2, 3].map((item) => (
-                  <div key={item} className="p-4 hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <Trophy className="h-5 w-5 text-yellow-500" />
-                      </div>
-                      <div className="ml-4">
-                        <p className="text-sm font-medium text-gray-900">
-                          Completed "No Plastic Challenge"
-                        </p>
-                        <p className="text-sm text-gray-500">2 hours ago</p>
-                      </div>
+                <div className="p-4 hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <Trophy className="h-5 w-5 text-yellow-500" />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-sm font-medium text-gray-900">
+                        Completed "No Plastic Challenge"
+                      </p>
+                      <p className="text-sm text-gray-500">2 hours ago</p>
                     </div>
                   </div>
-                ))}
+                </div>
+                <div className="p-4 hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <Trophy className="h-5 w-5 text-yellow-500" />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-sm font-medium text-gray-900">
+                        Completed "Bicycle for Walk"
+                      </p>
+                      <p className="text-sm text-gray-500">5 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <Trophy className="h-5 w-5 text-yellow-500" />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-sm font-medium text-gray-900">
+                        Joined "Eco Warriors Group"
+                      </p>
+                      <p className="text-sm text-gray-500">1 day ago</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -456,3 +481,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
