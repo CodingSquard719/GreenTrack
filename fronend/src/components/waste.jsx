@@ -138,7 +138,7 @@ const WasteManagementDashboard = () => {
                   <h3 className="text-xl font-semibold mb-4">📅 Schedule a Pickup</h3>
                   <div className="space-y-4">
                     <div className="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <img src="https://media.discordapp.net/attachments/1128761719611740236/1344853073834545303/Screenshot_2025-02-28_073229.png?ex=67c26b86&is=67c11a06&hm=2303cd9ef2acb8491e9555b76b9e0a6479cc4a5f1565d5f81b7921ae0fcc23d9&=&format=webp&quality=lossless&width=499&height=311" alt="" />
+                      <img src="https://media.discordapp.net/attachments/1128761719611740236/1344853073834545303/Screenshot_2025-02-28_073229.png?ex=67dc20c6&is=67dacf46&hm=6113427a88da7b740d223053b1f8e3f9b178bfa3eed3bd06126c9eeed80d6194&=&format=webp&quality=lossless&width=499&height=311" alt="" />
                     </div>
                     <button className="bg-green-500 text-white px-4 py-2 rounded-lg w-full">
                       Confirm Pickup
