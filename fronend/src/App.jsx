@@ -16,7 +16,7 @@ import EnvironmentalReportForm from './components/EnvironmentalReportForm';
 import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   // Protected Route component
   const ProtectedRoute = ({ children }) => {
