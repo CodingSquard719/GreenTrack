@@ -41,6 +41,7 @@ const GreenTrackLogin = ({ setIsAuthenticated }) => {
     return () => clearInterval(interval);
   }, []);
   
+  // Update the handleLogin function
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -52,12 +53,24 @@ const GreenTrackLogin = ({ setIsAuthenticated }) => {
       return;
     }
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Here you would normally make an API call to verify credentials
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating API call
+      
+      // If login is successful
+      if (typeof setIsAuthenticated === 'function') {
+        setIsAuthenticated(true);
+      }
+      
+      // Navigate to the landing/dashboard page
+      navigate('/landingpage', { replace: true });
+    } catch (error) {
+      console.error('Login failed:', error);
+      setFormShake(true);
+      setTimeout(() => setFormShake(false), 500);
+    } finally {
       setIsLoading(false);
-      setIsAuthenticated(true);
-      navigate('/welcome'); // Navigate to landing page after login
-    }, 2000);
+    }
   };
   
   const switchView = () => {

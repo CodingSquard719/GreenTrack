@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import LandingPage from "./page/landingpage";
 import CarbonTracker from "./components/carbon";
 import Dashboard from "./components/home";
-import WasteManagementDashboard from "./components/waste";
+import WasteManagement from "./components/waste";
 import EnvironmentalMonitoring from "./components/monitoring";
 import GreenChallengesPage from "./components/challenges";
 import CommunityEventsPage from "./components/community";
@@ -11,8 +11,9 @@ import ProfilePage from "./components/profile";
 import MapComponent from "./components/GoogleMap";
 import { Toaster } from "./components/ui/toaster";
 import RegisterForm from './components/RegisterForm';
-import LoginPage from "./page/login";
+import Login from "./page/login";
 import EnvironmentalReportForm from './components/EnvironmentalReportForm';
+import Scanning from './components/scanning';
 import './App.css';
 
 function App() {
@@ -39,8 +40,11 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            {/* Public routes */}
-            <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
+            {/* Redirect root path to login */}
+            <Route path="/" element={<Navigate to="/login" replace />} />
+            
+            {/* Auth routes */}
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterForm />} />
             
             {/* Landing page route */}
@@ -63,9 +67,6 @@ function App() {
               }
             />
 
-            {/* Redirect root to login */}
-            <Route path="/" element={<Navigate to="/login" />} />
-            
             {/* Other protected routes */}
             <Route
               path="/dashboard"
@@ -89,7 +90,7 @@ function App() {
               path="/waste"
               element={
                 <ProtectedRoute>
-                  <WasteManagementDashboard />
+                  <WasteManagement />
                 </ProtectedRoute>
               }
             />
@@ -144,6 +145,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <EnvironmentalReportForm />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/scan"
+              element={
+                <ProtectedRoute>
+                  <Scanning />
                 </ProtectedRoute>
               }
             />

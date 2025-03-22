@@ -19,7 +19,7 @@ const LandingPage = () => {
                     </h1>
                     <p className="text-2xl text-green-700 mb-8 max-w-2xl mx-auto">
                         Join the movement towards a sustainable future with AI-powered environmental monitoring and tracking
-                        <h1 className="font-semibold text-3xl">"Surrounded by green my soul feels green"</h1>
+                        <h1 className="font-semibold text-3xl">"Surrounded by green my soul feels clean"</h1>
                     </p>
                     <button 
                         onClick={handleGetStarted}

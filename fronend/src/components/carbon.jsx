@@ -29,8 +29,12 @@ const CarbonTracker = () => {
 
   const [activities, setActivities] = useState({
     travel: {
-      car: '',
-      bus: '',
+      Petrolcar: '',
+      Dieselcar: '',
+      Electriccar: '',
+      Petrolbus: '',
+      Electricbus: '',
+      Dieselbus: '',
       train: ''
     },
     electricity: {
@@ -46,11 +50,11 @@ const CarbonTracker = () => {
   });
 
   const [history, setHistory] = useState([
-    { date: '2024-02-16', score: 12, average: 14 },
-    { date: '2024-02-17', score: 8, average: 14 },
-    { date: '2024-02-18', score: 15, average: 14 },
-    { date: '2024-02-19', score: 10, average: 14 },
-    { date: '2024-02-20', score: 7, average: 14 }
+    { date: '2024-03-16', score: 12, average: 14 },
+    { date: '2024-03-17', score: 8, average: 14 },
+    { date: '2024-03-18', score: 15, average: 14 },
+    { date: '2024-03-19', score: 10, average: 14 },
+    { date: '2024-03-20', score: 7, average: 14 }
   ]);
 
   const [showSuggestions, setShowSuggestions] = useState(true);
@@ -59,8 +63,12 @@ const CarbonTracker = () => {
   // Carbon calculation factors (kg CO2 per unit)
   const carbonFactors = {
     travel: {
-      car: 0.2, // per km
-      bus: 0.08, // per km
+      Petrolcar: 0.24, // per km
+      Dieselcar: 0.25, // per km
+      Electriccar: 0.05, // per km
+      Petrolbus: 0.08, // per km
+      Electricbus: 0.03, // per km
+      Dieselbus: 0.1, // per km
       train: 0.04 // per km
     },
     electricity: {

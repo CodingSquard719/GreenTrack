@@ -15,7 +15,7 @@ const CommunityEventsPage = () => {
       members: 1245,
       description: "Local community focused on urban sustainability and green spaces",
       location: "Downtown Area",
-      image:"https://media.discordapp.net/attachments/1128761719611740236/1344679521399472159/Forest2.jpg?ex=67c1c9e4&is=67c07864&hm=37e01e88705464f0917d924e3e981e99feb891ee1d309cdafaef08b950759851&=&format=webp&width=469&height=313",
+      image:"https://media.discordapp.net/attachments/1128761719611740236/1344679256357343275/treeplant.jpg?ex=67dcd065&is=67db7ee5&hm=d7a593b5c1770681eb2964fa9765a877ed1a211db22d948f6aa8e9e17c722606&=&format=webp&width=775&height=465",
       tags: ["Urban Gardening", "Waste Reduction"]
     },
     {
@@ -24,7 +24,7 @@ const CommunityEventsPage = () => {
       members: 856,
       description: "Dedicated to keeping our beaches and oceans clean",
       location: "Coastal Region",
-      image: "https://media.discordapp.net/attachments/1128761719611740236/1344679454831542303/oc2.jpg?ex=67c1c9d4&is=67c07854&hm=1a963ebd64b6f2478060cfeba831bdcf31dee5dea69174068460c657730eaa77&=&format=webp&width=879&height=586",
+      image: "https://media.discordapp.net/attachments/1128761719611740236/1344679454831542303/oc2.jpg?ex=67dcd094&is=67db7f14&hm=9138d1a524f4df89d0a54e7177bc76c40b08515baf75fc508107201b90431b07&=&format=webp&width=920&height=614",
       tags: ["Beach Cleanup", "Marine Life"]
     },
     {
@@ -33,7 +33,7 @@ const CommunityEventsPage = () => {
       members: 678,
       description: "Tree planting and forest conservation group",
       location: "National Park",
-      image: "https://media.discordapp.net/attachments/1128761719611740236/1344679256357343275/treeplant.jpg?ex=67c1c9a5&is=67c07825&hm=cf0847b9dc1d8966426f8cb8a544b3ecc12143b5909a3bc366b9caed520ca6aa&=&format=webp&width=775&height=465",
+      image: "https://media.discordapp.net/attachments/1128761719611740236/1344679521399472159/Forest2.jpg?ex=67dcd0a4&is=67db7f24&hm=75530686724a79c9b268db21639c185aa8f17a858103ad2c67154fe56b09ccac&=&format=webp&width=469&height=313",
       tags: ["Tree Planting", "Conservation"]
     }
   ];
@@ -79,7 +79,7 @@ const CommunityEventsPage = () => {
       content: "What started as a small plot has grown into a thriving community space...",
       likes: 156,
       comments: 23,
-      image: "https://media.discordapp.net/attachments/1128761719611740236/1344680823156375562/Gifford_Park_Neighborhood_Association_Community_Garden.jpg?ex=67c1cb1b&is=67c0799b&hm=d9f0a008d7db54b3efa25f2a0b9bb8dff4d4964fae5a9958ddfced17bff2f0b3&=&format=webp&width=750&height=563",
+      image: "https://media.discordapp.net/attachments/1128761719611740236/1344680823156375562/Gifford_Park_Neighborhood_Association_Community_Garden.jpg?ex=67dcd1db&is=67db805b&hm=c62f1fca2bf4fb9e471c335e2d7dd78f6a0a33bd2503320dcfc775305168e06e&=&format=webp&width=750&height=563",
       date: "2 days ago"
     },
     {
@@ -89,7 +89,7 @@ const CommunityEventsPage = () => {
       content: "My journey to a zero-waste lifestyle began six months ago...",
       likes: 89,
       comments: 15,
-      image: "https://media.discordapp.net/attachments/1128761719611740236/1344683872604127333/understanding-ecology-zero-waste-concept-sustainable-living_895561-38723.jpg?ex=67c1cdf2&is=67c07c72&hm=91a289b64dc7dbb6a648b1d83faad9dbf2351948a3237b64be37bfb196973a2d&=&format=webp&width=1046&height=586",
+      image: "https://media.discordapp.net/attachments/1128761719611740236/1344683872604127333/understanding-ecology-zero-waste-concept-sustainable-living_895561-38723.jpg?ex=67dcd4b2&is=67db8332&hm=f9554b3fe9736c93163487e7bb9ec83740d996809834dbe5c55763cac1469366&=&format=webp&width=1533&height=859",
       date: "4 days ago"
     }
   ]);

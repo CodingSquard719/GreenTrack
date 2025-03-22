@@ -20,11 +20,14 @@ import {
   UserCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+const API_KEY = 'https://api.openweathermap.org/data/2.5/weather?appid=5c291859286dd8c630337ead92c3d287';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedMetric, setSelectedMetric] = useState('daily');
   const [expandedCard, setExpandedCard] = useState(null);
+  const [location, setLocation] = useState('');
+  const [weatherData, setWeatherData] = useState(null);
   const navigate = useNavigate();
 
   const navItems = [
@@ -37,7 +40,7 @@ const Dashboard = () => {
     { title: 'Profile', icon: UserCircle, route: '/profile' }
   ];
 
-  const weatherData = {
+  const weatherDataStatic = {
     temp: 22,
     condition: 'Partly Cloudy',
     humidity: 65,
@@ -69,6 +72,22 @@ const Dashboard = () => {
   const handleNavigation = (path, e) => {
     e.preventDefault();
     navigate(path);
+  };
+
+  const fetchWeatherData = async (location) => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=5c291859286dd8c630337ead92c3d287`
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setWeatherData(data);
+      } else {
+        console.error('Error fetching weather data:', data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const ProfileModal = () => (
@@ -258,19 +277,55 @@ const Dashboard = () => {
                 </div>
               )}
             </div>
-
+            <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-lg font-semibold text-gray-800">Weather</h2>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <select 
+                    value={location}
+                    onChange={(e) => {
+                      setLocation(e.target.value);
+                      fetchWeatherData(e.target.value);
+                    }}
+                    className="w-full p-2 border rounded-lg"
+                  >
+                    <option value="">Select Location</option>
+                    <option value="Sainthia">Sainthia</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Contai">Delhi</option>
+                    </select>
+                </div>
+                
+                {/* Display Weather Data */}
+                {weatherData && (
+                  <div className="mt-4">
+                    <p className="text-gray-600">
+                      <strong>Temperature:</strong> {weatherData.main.temp}°C
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Humidity:</strong> {weatherData.main.humidity}%
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Condition:</strong> {weatherData.weather[0].description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
             {/* Weather Card */}
-            <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            {/* <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
               <h2 className="text-lg font-semibold text-gray-800 mb-4">Weather Report</h2>
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-3xl font-bold text-gray-800">{weatherData.temp}°C</div>
-                  <p className="text-gray-500">{weatherData.condition}</p>
+                  <div className="text-3xl font-bold text-gray-800">{weatherDataStatic.temp}°C</div>
+                  <p className="text-gray-500">{weatherDataStatic.condition}</p>
                 </div>
                 <Sun className="h-12 w-12 text-yellow-500" />
               </div>
               <div className="mt-4 grid grid-cols-4 gap-2">
-                {weatherData.forecast.map((day, index) => (
+                {weatherDataStatic.forecast.map((day, index) => (
                   <div key={index} className="text-center">
                     <p className="text-sm text-gray-500">{day.day}</p>
                     <day.icon className="h-6 w-6 mx-auto my-1 text-gray-600" />
@@ -278,7 +333,7 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Air Quality Card */}
             <div
@@ -452,7 +507,7 @@ const Dashboard = () => {
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-900">
-                        Completed "Bicycle for Walk"
+                        Completed "Bicycle for Wk"
                       </p>
                       <p className="text-sm text-gray-500">5 hours ago</p>
                     </div>
